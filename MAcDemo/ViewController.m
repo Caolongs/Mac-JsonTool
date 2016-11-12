@@ -15,6 +15,9 @@
 
 @end
 
+/**
+ *  输入中英文改变问题
+ */
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -24,6 +27,7 @@
 
 - (IBAction)buttonClick:(NSButton *)sender {
     NSDictionary *dict = [self dictionaryWithJsonString:[self.textView1 string]];
+    [self.arrModelStr deleteCharactersInRange:NSMakeRange(0, _arrModelStr.length)];
     if (dict) {
         NSString *modelStr = [self createModelWithDictionary:dict modelName:@"model"];
         NSMutableString *endString = [NSMutableString stringWithString:modelStr];
@@ -80,6 +84,8 @@
         }else if ([dict[key] isKindOfClass:[NSDictionary class]]){
             type1 = @"NSDictionary";
             type2 = @"strong";
+            NSString *strr = [self createModelWithDictionary:dict[key] modelName:[self capStrModel:key]];
+            [self.arrModelStr appendString:strr];
         }else if ([dict[key] isKindOfClass:[NSData class]]){//json
             type1 = @"######";
             type2 = @"######";
@@ -95,6 +101,7 @@
     }
     [mStr appendString:@"\n@end\n"];
     
+    [mStr appendString:@"\n/**************************************-model-****************************************/\n"];
     return mStr;
 }
 
