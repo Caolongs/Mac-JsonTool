@@ -1,8 +1,8 @@
 # Mac-JsonTool
 json生成属性声明
 
-*Mac下开发完应用程序之后,编译出的product一般是.app或者pkg文件.那么如何打包为Mac下的dmg安装文件.*
-
+**Mac下打包dmg安装文件**
+Mac下开发完应用程序之后,编译出的product一般是.app或者pkg文件.
 - 将需要打包的程序编译好，形成app文件(pkg文件也可)
 - 在桌面或者你方便找到的地方新建一个文件夹,然后将步骤1准备的app文件放入
 - 创建根目录的applications的快捷方式,同样放入步骤2准备的文件夹
